@@ -1,0 +1,30 @@
+name: CI
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    env:
+      SALUS_CARD_BROWSER_CHANNEL: chrome
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --package-lock=false
+      - run: npm run build
+      - run: git diff --exit-code -- salus-room-card.js
+      - run: node --check salus-room-card.js
+      - run: node scripts/test_dashboard_card.cjs
+      - run: node scripts/test_dashboard_card.cjs
+        env:
+          SALUS_CARD_TEST_TOUCH: "1"
+      - run: node scripts/test_dashboard_registration.cjs
+  hacs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hacs/action@main
+        with:
+          category: plugin

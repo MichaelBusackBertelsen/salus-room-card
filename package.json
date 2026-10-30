@@ -1,0 +1,14 @@
+{
+  "name": "salus-room-card",
+  "version": "1.5.0-beta.1",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "test": "node scripts/test_dashboard_card.cjs && node scripts/test_dashboard_registration.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "@webcomponents/scoped-custom-element-registry": "0.0.10"
+  }
+}
