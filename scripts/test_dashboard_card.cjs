@@ -347,6 +347,7 @@ const output=path.join(root,'.dashboard-test-output');fs.mkdirSync(output,{recur
   }
  });
  await page.setViewportSize({width:1024,height:1100});
+ await page.evaluate(()=>document.querySelectorAll('salus-climate-card').forEach(room=>{room.hass={...room._hass,language:'en'};}));
  await page.screenshot({path:path.join(output,'dashboard-preview.png'),fullPage:true});
  if(errors.length)throw Error(errors.join('\n'));
  const report={passed:checks.length,checks,limitations:['Browser test uses simulated Home Assistant entities and services.','No running Home Assistant or gateway settings changed.','Card picker and graphical editor tested with simulated registry device links.']};

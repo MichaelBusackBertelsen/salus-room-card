@@ -8,6 +8,10 @@ follows Home Assistant's language. Any compatible climate entity can be used.
 integration. Installing it does not create automations or change heating settings.
 Your existing integration beta can remain installed during card testing.
 
+![Room-card preview with simulated entities](images/preview.png)
+
+The preview uses simulated entities and measurements, not a user's installation.
+
 ## Install through HACS
 
 1. HACS → menu → Custom repositories.
